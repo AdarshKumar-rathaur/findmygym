@@ -177,7 +177,7 @@ export default function Gym( { userPosition, API_KEY } ) {
         }
     }
 
-    useEffect(getDistance, [userPosition]);
+    useEffect(getDistance, [userPosition, API_KEY]);
 
     return (
         <div className="container">
