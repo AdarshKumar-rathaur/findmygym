@@ -36,9 +36,7 @@ function App() {
   };
 
   useEffect(getUserPostion, []);
-  useEffect(getUserAddress, 
-    // eslint-disable-next-line 
-    [userPosition]);
+  useEffect(getUserAddress, [userPosition, API_KEY]);
 
   return (
     <>
