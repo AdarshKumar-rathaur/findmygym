@@ -1,7 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import "./Navbar.css";
 
 export default function Navbar(props) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.setSearch(searchTerm);
+  };
   return (
     <header>
       <div className="navbar">
@@ -15,17 +21,21 @@ export default function Navbar(props) {
               <span id="thin">MYGYM</span>
             </div>
           </div>
-          <div className="nav-search">
+          <form className="nav-search" onSubmit={handleSubmit}>
             <input
               name="search"
-              type="search"
               placeholder="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
               className="search-input"
             />
-            <div className="search-icon">
+            <div
+              className="search-icon"
+              onClick={handleSubmit}
+            >
               <i className="fa-solid fa-magnifying-glass" />
             </div>
-          </div>
+          </form>
         </div>
         <div className="nav_content right">
           <form name="userAddress">
