@@ -39,7 +39,7 @@ export default function Navbar(props) {
         </div>
         <div className="nav_content right">
           <form name="userAddress">
-            <select className="userAddress">
+            <select className="userAddress" name="userAddress">
               <option>{props.location}</option>
               <option value="noida">Noida</option>
               <option value="greaterNoida">Greater Noida</option>
