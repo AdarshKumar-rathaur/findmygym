@@ -1,8 +1,10 @@
-import React from 'react'
-import './Spinner.css'
+import React from "react";
+import "./Spinner.css";
 
-export default function Spinner( {height, width} ) {
+export default function Spinner({ height, width }) {
   return (
-    <div className='spinner' style={{"height": height, "width": width}}/>
-  )
+    <div className="spinner_position">
+      <div className="spinner" style={{ height: height, width: width }} />
+    </div>
+  );
 }
