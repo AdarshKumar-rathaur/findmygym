@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router";
 import "./Navbar.css";
 
 export default function Navbar(props) {
@@ -38,7 +39,7 @@ export default function Navbar(props) {
           </form>
         </div>
         <div className="nav_content right">
-          <form name="userAddress">
+          <form>
             <select className="userAddress" name="userAddress">
               <option>{props.location}</option>
               <option value="noida">Noida</option>
@@ -47,7 +48,7 @@ export default function Navbar(props) {
             </select>
           </form>
           <div className="login">
-            <button className="login-button">Sign In</button>
+            <Link to="/login"><button className="login-button">Sign In</button></Link>
           </div>
         </div>
       </div>

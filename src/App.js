@@ -34,14 +34,26 @@ function App() {
       fetch(
         `https://api.geoapify.com/v1/geocode/reverse?lat=${userPosition.latitude}&lon=${userPosition.longitude}&type=city&apiKey=${API_KEY}`
       )
-        .then((response) => response.json())
-        .then((result) => setUserAddress(result.features[0].properties.city))
-        .catch((error) => console.error(error));
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((result) => {
+          if (result.features && result.features[0] && result.features[0].properties.city) {
+            setUserAddress(result.features[0].properties.city);
+          } else {
+            setUserAddress("City not found"); // Handle non-city response
+          }
+        })
+        .catch((error) => console.error("Geoapify Error:", error));
     }
   };
 
   useEffect(getUserPostion, []);
-  useEffect(getUserAddress, [userPosition, API_KEY]);
+  // eslint-disable-next-line
+  useEffect(getUserAddress, [userPosition]);
 
   return (
     <>
